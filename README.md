@@ -18,7 +18,7 @@ Para cada registro, el usuario debe proveer obligatoriamente:
 - **Nombre Usuario**: Alias del atleta (Max. 40 caracteres).
 - **Rutina**: Vector con capacidad para 12 ejercicios, optimizado mediante `InitSpace`.
 
-## 🛠️ Instrucciones CRUD
+##  Instrucciones CRUD
 
 1. **Inicializar**: `inicializar_log` crea la PDA necesaria para empezar a guardar datos.
 2. **Registrar**: `registrar_ejercicio` añade un nuevo objeto al vector. Requiere que todos los parámetros numéricos y de texto sean provistos.
