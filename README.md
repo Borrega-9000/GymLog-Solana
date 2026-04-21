@@ -1,60 +1,27 @@
-# Biblioteca en Solana
+# GymLog Solana - Bitácora de Entrenamiento 
 
-![banner](./images/banner-biblioteca.jpg)
+**GymLog Solana** es un contrato inteligente diseñado para atletas y entusiastas del fitness que desean registrar su progreso físico de manera inmutable en la blockchain de Solana. Este programa elimina el uso de estados predeterminados, obligando a una entrada de datos completa por parte del usuario.
 
-CRUD básico de un Solana Program desarrollado con Rust y Anchor desde el Solana Playground. 
+##  Especificaciones Técnicas
 
-Puedes comenzar dándole Fork a este repositorio (abajo te explicamos como 👇), **hemos preparado un entorno de codespaces listo para que no tengas que instalar nada**, solo déjate llevar por la fluidez de los ejercicios y temas desarrollados especialmente para ti. 
+El programa utiliza **PDAs** para el almacenamiento de datos, permitiendo que cada usuario sea dueño de su información mediante una cuenta derivada de su propia llave pública.
 
-Asegúrate de clonar este repositorio a tu cuenta usando el botón **`Fork`**.
+### Requisitos de Datos (Sin Valores por Defecto)
+Para cada registro, el usuario debe proveer obligatoriamente:
+- **Nombre del Ejercicio**: Identificador único en la rutina.
+- **Series**: Cantidad de sets realizados (u8).
+- **Repeticiones**: Cantidad de ejecuciones por set (u8).
+- **Peso (kg)**: Carga utilizada en el ejercicio (u16).
 
-![fork](./images/fork.png)
+### Estructura de la Cuenta
+- **Owner**: Llave pública del usuario (32 bytes).
+- **Nombre Usuario**: Alias del atleta (Max. 40 caracteres).
+- **Rutina**: Vector con capacidad para 12 ejercicios, optimizado mediante `InitSpace`.
 
-## Importando el proyecto 
+## 🛠️ Instrucciones CRUD
 
-Ya con el repositorio en tu cuenta lo siguiente que debes hacer copiar el `enlace de tu repositorio`, lo que se puede hacer directamente desdel navegador:
-
-![repo](./images/repo.png)
-Posteriormente, lo uniremos con el siguiente enlace en nuestro navegador de preferencia:
-
-```url
-https://beta.solpg.io/
-```
-
-Lo que nos dará algo parecido a:
-
-![url](./images/url.png)
-
-Al pulsar enter seremos enviados al `Solana Playground` con nuestro proyecto abierto:
-
-![pg](./images/pg.png)
-
-Para guardarlo solo damos clic en el boton `import` y asignamos un nombre:
-
-![import](./images/import.png)
-
-## Preparacion del entorno
-
-Primero conectaremos el entorno con la devnet, lo que tambien procederá a la creación de una wallet. Para eso daremos clic en donde dice **Not Conected**:
-
-![playground1](./images/playground1.png)
-
-Saldrá la siguiente ventana donde daremos en el botón **Continue**:
-
-![wallet](./images/wallet.png)
-
-Como resultado se mostrará la siguiente información:
-
-![status](./images/status.png)
-
-* En verde: el estado de la conexión y el entorno al que se encuentra conectado
-
-* En amarillo: la la dirección de la wallet conectada
-
-* En azul: la cantidad de tokens en la wallet
-
-> ℹ️ ¿Quieres ver el ejemplo de un "Hola Mundo" en Solana?. Da clic aquí: 👉 [Ver Ejemplo](https://github.com/WayLearnLatam/Solana-starter-kit/tree/1fc6349ba63375a3fe223d8d56911bc64765459b/build-deploy)
-
-> ℹ️ ¿Cuentas con una Wallet de [Phantom](https://phantom.com/) que deseas importar?, Da clic aquí para ver como hacerlo: 
-
-👉 [Como Importar una Wallet](https://github.com/WayLearnLatam/Solana-starter-kit/tree/1fc6349ba63375a3fe223d8d56911bc64765459b/import-key-a-playground)
+1. **Inicializar**: `inicializar_log` crea la PDA necesaria para empezar a guardar datos.
+2. **Registrar**: `registrar_ejercicio` añade un nuevo objeto al vector. Requiere que todos los parámetros numéricos y de texto sean provistos.
+3. **Editar**: `editar_ejercicio` permite actualizar las métricas de un ejercicio específico cuando el usuario progresa en sus cargas.
+4. **Eliminar**: `eliminar_ejercicio` remueve un registro del vector basándose en el nombre del ejercicio.
+5. **Leer**: `ver_rutina` muestra el estado actual de la cuenta en los logs.
