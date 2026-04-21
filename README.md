@@ -1,5 +1,4 @@
-# GymLog Solana - Bitácora de Entrenamiento en Solana
-
+# GymLog Solana 
 **GymLog Solana** es un programa inteligente desarrollado sobre la blockchain de **Solana** usando el framework **Anchor**, cuyo objetivo es permitir que cada usuario registre, administre y consulte su rutina de entrenamiento físico de forma descentralizada, persistente e inmutable.
 
 La propuesta del sistema consiste en reemplazar una bitácora tradicional de gimnasio por una estructura de datos alojada en blockchain, donde cada atleta o usuario puede almacenar información relevante de sus ejercicios realizados, como el nombre del ejercicio, el número de series, las repeticiones y el peso empleado. De esta manera, el progreso físico deja de depender de registros locales o aplicaciones centralizadas, y pasa a conservarse en una cuenta propia dentro de Solana, protegida criptográficamente y asociada directamente a la clave pública del propietario.
